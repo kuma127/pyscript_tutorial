@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue</title>
+    <py-env>
+      - numpy
+      - matplotlib
+      - paths:
+        - ./data.py
+    </py-env>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+    <div id="plot"></div>
+    <py-script>
+import matplotlib.pyplot as plt
+from data import make_x_and_y
+
+x, y = make_x_and_y(n=1000)
+
+fig, ax = plt.subplots()
+ax.scatter(x, y)
+pyscript.write('plot', fig)
+    </py-script>
+  </body>
+</html>

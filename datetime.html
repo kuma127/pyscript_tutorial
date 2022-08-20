@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>REPL</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  </head>
+
+  <body>
+    <div id="pi" class="alert alert-primary"></div>
+    <br>
+    Hello world! <br>
+    This is the current date and time, as computed by Python:
+        <label id='today'></label>
+    <py-script>
+from datetime import datetime
+now = datetime.now()
+pyscript.write('today', now.strftime("%m/%d/%Y, %H:%M:%S"))
+
+def compute_pi(n):
+    pi = 2
+    for i in range(1,n):
+        pi *= 4 * i ** 2 / (4 * i ** 2 - 1)
+    return pi
+
+pi = compute_pi(100000)
+pyscript.write('pi', f'π is approximately {pi:.3f}')
+    </py-script>
+  </body>
+</html>
