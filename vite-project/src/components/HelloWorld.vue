@@ -10,6 +10,15 @@ const count = ref(0)
 
 <template>
   <h1>{{ msg }}</h1>
+  <div id="plot"></div>
+  <py-script>
+import matplotlib.pyplot as plt;
+from data import make_x_and_y;
+x, y = make_x_and_y(n=1000);
+fig, ax = plt.subplots();
+ax.scatter(x, y);
+pyscript.write('plot', fig)
+  </py-script>
 
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
